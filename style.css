@@ -1,0 +1,199 @@
+/*
+Theme Name: Ma RH en Nord
+Author: Adeline Manier (avec l'aide de Gemini)
+Description: Thème sur mesure pour le site Ma RH en Nord, basé sur un design one-page.
+Version: 3.5
+Requires at least: 5.0
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: marhennord
+*/
+
+/* Styles personnalisés pour la typographie et les couleurs */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+/* Style pour le header avec la couleur de fond du site */
+header, #mobile-menu {
+    background-color: #FEF8E9 !important;
+}
+
+/* Style pour les sections, assurant qu'elles prennent toute la hauteur de la fenêtre */
+.section-height {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    padding-top: 5rem;
+}
+.bg-accueil { background-color: #FEF8E9; }
+.bg-vision { background-color: #D47344; color: #FFF; }
+.bg-services { background-color: #FEF8E9; }
+.bg-facilitation-rh { background-color: #D47344; color: #FFF; }
+.bg-contact { background-color: #FEF8E9; }
+
+.section-text {
+    font-size: 1.25rem; 
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.contact-link {
+    @apply text-[#D47344] hover:underline;
+}
+
+.social-icon-contact {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #FFF;
+    color: #D47344;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.social-icon-contact:hover {
+    transform: translateY(-3px);
+}
+
+
+/* --- STYLES MENU --- */
+.nav-link {
+    position: relative;
+    padding: 0.5rem;
+    padding-bottom: 6px;
+    font-weight: 600;
+    color: #D47344;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.nav-link:hover,
+.current-menu-item > a.nav-link {
+    color: #b35124;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 1rem);
+    height: 2px;
+    background-color: #D47344;
+    left: 0.5rem;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-out;
+}
+.nav-link:hover::after,
+.current-menu-item > a::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+/* --- STYLE IMAGE ACCUEIL PLEINE HAUTEUR --- */
+@media (min-width: 768px) {
+    #accueil {
+        align-items: stretch; 
+        padding-top: 5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 0;
+    }
+    
+    #accueil .home-text-content {
+        align-self: center;
+    }
+    #accueil .home-image-container {
+        padding: 0;
+        align-self: stretch;
+    }
+    #accueil .home-image-container > img {
+        height: 100%;
+        width: 100%;
+        max-width: none; 
+        object-fit: cover; 
+        object-position: center top; 
+    }
+}
+
+/* --- NETTOYAGE DES ANCIENS STYLES CONTACT --- */
+#contact .main-title,
+#contact .contact-details,
+#contact .social-legal {
+   all: unset;
+}
+
+/* Correction de la mise en page de la section Contact */
+#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre le contenu verticalement */
+    align-items: flex-start; /* Aligne le contenu à gauche */
+}
+
+#contact .contact-title {
+    margin-bottom: 10rem; /* Espace important entre le titre et le bas */
+}
+
+#contact .contact-bottom-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#contact .social-info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligne à droite sur desktop */
+}
+
+#contact .social-info-block .contact-link {
+    color: #D47344;
+}
+
+
+@media (max-width: 768px) {
+    #contact {
+        justify-content: space-between; /* Rétablit l'espacement sur mobile */
+    }
+    #contact .contact-title {
+        text-align: center;
+        margin-bottom: 4rem; /* Marge ajustée pour mobile */
+    }
+    #contact .contact-bottom-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #contact .social-info-block {
+        align-items: center; /* Centre sur mobile */
+        margin-top: 2rem;
+    }
+}
+
+/* --- STYLES MENU MOBILE --- */
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+.mobile-nav-links .menu-item {
+    text-align: center;
+    border-bottom: 1px solid #fdf4e1;
+}
+.mobile-nav-links .menu-item:last-child {
+    border-bottom: none;
+}
+.mobile-nav-links .nav-link {
+    padding: 1rem;
+    font-size: 1.25rem;
+}
